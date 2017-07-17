@@ -26,7 +26,14 @@ meth.loadPlugins = function() {
         task.interim(task.result.ok, `Loaded plugin "${$mod}"`)
     });
 
-    plugins.addDir(main.directories.plugins, true);
+    try {
+        plugins.addDir(main.directories.plugins, true);
+        task.end(task.result.ok);
+    }
+    catch ($e) {
+        task.end(task.result.error);
+        main.writeLog(main.logLevels.error, $e);
+    }
 
     main.writeLog(main.logLevels.trace, { mod: 'PLUGIN', msg: '\\\\ plugin.loadPlugins()' });
 };
