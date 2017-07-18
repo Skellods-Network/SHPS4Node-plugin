@@ -6,8 +6,6 @@
   "main": "index.js",
   "dependencies": {
     "mics": "^0.6.3",
-    "node-mod-load": "^3.2.0",
-    "promise-defer": "^1.0.0",
-    "vasync": "^1.6.4"
+    "node-mod-load": "^3.2.0"
   }
 }
