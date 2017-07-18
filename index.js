@@ -8,4 +8,4 @@ nmlComl.addMeta('meth', {});
 nmlComl.addDir(__dirname + path.sep + 'interface', true);
 nmlComl.addDir(__dirname + path.sep + 'src', true);
 
-module.exports = nmlComl.libs['plugin.h'];
+module.exports = nmlComl.libs['Plugin.h'];

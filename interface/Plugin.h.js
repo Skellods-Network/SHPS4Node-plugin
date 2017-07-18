@@ -12,5 +12,10 @@ module.exports = mix(mixins.base, mixins.init, superclass => class Plugin extend
 
     static init() { return meth.init(); }
 
-    loadPlugins() { throw new Error('Not implemented: Plugin.loadPlugins()!'); }
+    /**
+     * Load all modules at a certain path as plugins
+     *
+     * @param {string} path
+     */
+    loadPlugins(path) { throw new Error('Not implemented: Plugin.loadPlugins()!'); }
 });

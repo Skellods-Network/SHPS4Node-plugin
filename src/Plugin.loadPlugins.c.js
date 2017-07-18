@@ -7,8 +7,8 @@ const libs = nml('SHPS4Node-plugin').libs;
 const main = nml('SHPS4Node').libs.main;
 const meth = libs.meth;
 
-meth.loadPlugins = function() {
-    main.writeLog(main.logLevels.trace, { mod: 'PLUGIN', msg: 'plugin.loadPlugins()' });
+meth.loadPlugins = function($path) {
+    main.writeLog(main.logLevels.trace, { mod: 'PLUGIN', msg: `plugin.loadPlugins(${$path})` });
 
     const plugins = nml('SHPS4Node-plugins');
 
@@ -27,12 +27,13 @@ meth.loadPlugins = function() {
     });
 
     try {
-        plugins.addDir(main.directories.plugins, true);
+        plugins.addDir($path, true);
         task.end(task.result.ok);
     }
     catch ($e) {
+        main.writeLog(main.logLevels.trace, { mod: 'PLUGIN', msg: `Error while adding plugins from dir: ${$e.message}` });
         task.end(task.result.error);
-        main.writeLog(main.logLevels.error, $e);
+        main.writeLog(main.logLevels.error, { mod: 'PLUGIN', msg: `\n${$e.stack}\n` });
     }
 
     main.writeLog(main.logLevels.trace, { mod: 'PLUGIN', msg: '\\\\ plugin.loadPlugins()' });
